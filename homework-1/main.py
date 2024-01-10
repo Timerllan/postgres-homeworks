@@ -24,7 +24,7 @@ with open('north_data/employees_data.csv') as f:
     reader = csv.reader(f)
     next(reader)
     for row in reader:
-        cur.execute(
+        c = cur.execute(
             "INSERT INTO employees(employee_id, first_name, last_name, title, birth_date, notes) VALUES (%s, %s, %s, %s, %s, %s)",
             row)
 
@@ -35,6 +35,6 @@ with open('north_data/orders_data.csv') as f:
         cur.execute(
             "INSERT INTO orders(order_id, customer_id, employee_id, order_date, ship_city ) VALUES (%s, %s, %s, %s, %s)",
             row)
-
+print(c)
 conn.commit()
 conn.close()
